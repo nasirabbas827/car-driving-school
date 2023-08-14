@@ -10,19 +10,19 @@ if (!isset($_SESSION["usertype"]) || $_SESSION["usertype"] !== "admin") {
 
 // Fetch data for dashboard
 $totalUsers = 0;
-$totalCategories = 0;
-$totalVehicles = 0;
-$totalBookings = 0;
-$totalPendingBookings = 0;
+$totaldrivingschools = 0;
+$totalsubscriptions = 0;
+$totalenrollments = 0;
+$totalPendingenrollments = 0;
 $totalQueriesForReply = 0;
 
 // Replace with your SQL queries to fetch data from respective tables
 // Example queries:
 $totalUsers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM users"))['total'];
-$totalCategories = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM categories"))['total'];
-$totalVehicles = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM vehicles"))['total'];
-$totalBookings = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM bookings"))['total'];
-$totalPendingBookings = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM bookings WHERE status = 'pending'"))['total'];
+$totaldrivingschools = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM drivingschools"))['total'];
+$totalsubscriptions = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM subscriptions"))['total'];
+$totalenrollments = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM enrollments"))['total'];
+$totalPendingenrollments = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM enrollments WHERE status = 'pending'"))['total'];
 $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM messages WHERE reply_text IS NULL"))['total'];
 
 ?>
@@ -55,8 +55,8 @@ $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) 
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total Categories</h5>
-                    <p class="card-text"><?php echo $totalCategories; ?></p>
+                    <h5 class="card-title">Total Driving Schools</h5>
+                    <p class="card-text"><?php echo $totaldrivingschools; ?></p>
                 </div>
             </div>
         </div>
@@ -65,8 +65,8 @@ $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) 
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total Vehicles</h5>
-                    <p class="card-text"><?php echo $totalVehicles; ?></p>
+                    <h5 class="card-title">Total Subscriptions</h5>
+                    <p class="card-text"><?php echo $totalsubscriptions; ?></p>
                 </div>
             </div>
         </div>
@@ -77,8 +77,8 @@ $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) 
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total Bookings</h5>
-                    <p class="card-text"><?php echo $totalBookings; ?></p>
+                    <h5 class="card-title">Total Enrollments</h5>
+                    <p class="card-text"><?php echo $totalenrollments; ?></p>
                 </div>
             </div>
         </div>
@@ -87,8 +87,8 @@ $totalQueriesForReply = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) 
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total Pending Bookings</h5>
-                    <p class="card-text"><?php echo $totalPendingBookings; ?></p>
+                    <h5 class="card-title">Total Pending Enrollments</h5>
+                    <p class="card-text"><?php echo $totalPendingenrollments; ?></p>
                 </div>
             </div>
         </div>
